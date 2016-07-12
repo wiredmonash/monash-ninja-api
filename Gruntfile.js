@@ -42,7 +42,7 @@ module.exports = (grunt) => {
 
   grunt.registerTask('spec:unit', ['env:test', 'mochaTest:unit'])
   grunt.registerTask('spec:functional', ['env:test', 'mochaTest:functional'])
-  grunt.registerTask('spec', ['env:test', 'mochaTest:unit', 'mochaTest:functonal'])
+  grunt.registerTask('spec', ['env:test', 'mochaTest:unit', 'mochaTest:functional'])
   grunt.registerTask('docker', ['env:docker', 'mochaTest:unit', 'mochaTest:functional'])
   grunt.registerTask('serve', ['env:local', 'nodemon:local'])
 }

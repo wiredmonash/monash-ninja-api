@@ -21,6 +21,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "boom": "^3.2.2",
+    "chai": "^3.5.0",
     "glob": "^7.0.5",
     "grunt": "^1.0.1",
     "grunt-env": "^0.4.4",
@@ -29,6 +30,7 @@
     "hapi": "^13.5.0",
     "hapi-auth-jwt2": "^7.0.1",
     "lodash": "^4.13.1",
+    "mocha": "^2.5.3",
     "mongoose": "^4.5.4",
     "path": "^0.12.7"
   }
