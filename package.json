@@ -1,0 +1,31 @@
+{
+  "name": "hapi-js-boilerplate",
+  "version": "1.0.0",
+  "description": "A small project to make it easier and faster to build APIs.",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.hugo.sx:1022/hugo/hapi-js-boilerplate.git"
+  },
+  "keywords": [
+    "hapi",
+    "js",
+    "boilerplate",
+    "starter"
+  ],
+  "author": "Hugo Muller-Downing",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "boom": "^3.2.2",
+    "glob": "^7.0.5",
+    "hapi": "^13.5.0",
+    "hapi-auth-jwt2": "^7.0.1",
+    "lodash": "^4.13.1",
+    "mongoose": "^4.5.4",
+    "path": "^0.12.7"
+  }
+}
