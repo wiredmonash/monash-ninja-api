@@ -1,0 +1,38 @@
+image: node
+
+services:
+  - mongo
+
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+  - node_modules/
+
+before_script:
+  - npm install
+  - npm install -g grunt-cli
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client --force-yes )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+variables:
+  MONGO_URI: 'mongodb://mongo/hapi-js-boilerplate'
+  NODE_ENV: 'test'
+
+stages:
+  - mocha_test
+  - deploy
+
+job1:
+  stage: mocha_test
+  script: grunt docker
+
+job2:
+  stage: deploy
+  script:
+    - chmod +x deploy.sh
+    - bash deploy.sh
+  only:
+    - master
