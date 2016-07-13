@@ -4,7 +4,7 @@ const secret = require('./config')
 const env = require('./env')
 const validate = require('./app/util/validate')
 
-const routes = reqiure('./app/routes')
+const routes = require('./app/routes')
 
 const app = new Hapi.Server()
 
@@ -21,9 +21,16 @@ app.register(require('hapi-auth-jwt2'), (err) => {
     verifyOptions: { algorithms: ['HS256'] }
   })
 
-  app.auth.default('jwt')
+  // app.auth.default('jwt')
   app.route(routes)
 })
+
+if (!env.TESTING) {
+  app.on('response', (request) => {
+    console.log('Payload: ' + JSON.stringify(request.payload))
+    console.log(request.info.remoteAddress + ': ' + request.method.toUpperCase() + ' ' + request.url.path + ' --> ' + request.response.statusCode)
+  })
+}
 
 app.start((err) => {
   if (err) throw err
