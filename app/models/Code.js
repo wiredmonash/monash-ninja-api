@@ -14,7 +14,7 @@ CodeSchema.index({ studentId: 1 }, { unique: true })
 
 exports.useCode = (code, studentId, callback) => {
   CodeModel.findOne({code: code}, (err, code) => {
-    if (err) return callback('Error')
+    if (err || !code) return callback('Error')
     if (code.used) return callback('Code already used.')
     CodeModel.findOneAndUpdate(
       { _id: code._id },
