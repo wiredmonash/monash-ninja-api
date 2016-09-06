@@ -1,19 +1,17 @@
 const Joi = require('joi')
-
-exports.registerUser = {
-  handler: (req, res) => {
-    console.log(req.payload)
-    res()
-  }
-}
+const CodeModel = require('../models/Code')
 
 exports.useCode = {
   validate: {
-    params: {
-      code: Joi.string().length(6)
+    payload: {
+      code: Joi.string().length(5),
+      studentId: Joi.string().length(8)
     }
   },
   handler: (req, res) => {
-    res(req.params.code)
+    CodeModel.useCode(req.payload.code, req.payload.studentId, (err, code) => {
+      if (err || !code) return res({status: 'error'})
+      return res({status: 'sucess'})
+    })
   }
 }
