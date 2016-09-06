@@ -35,4 +35,4 @@ job2:
     - chmod +x deploy.sh
     - bash deploy.sh
   only:
-    - master
+    - release 

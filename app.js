@@ -21,7 +21,6 @@ app.register(require('hapi-auth-jwt2'), (err) => {
     verifyOptions: { algorithms: ['HS256'] }
   })
 
-  // app.auth.default('jwt')
   app.route(routes)
 })
 

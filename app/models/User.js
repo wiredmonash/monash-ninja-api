@@ -1,19 +1,19 @@
-const _ = require('lodash')
 const mongoose = require('mongoose')
 const password = require('../util/password')
 const Schema = mongoose.Schema
-const Boom = require('boom')
 
 const UserSchema = new Schema({
   email: { type: String, required: true },
   username: { type: String, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  code: { type: Schema.Types.ObjectId, required: true }
 })
 
 const UserModel = mongoose.model('User', UserSchema)
 
 UserSchema.index({ email: 1 }, { unique: true })
 UserSchema.index({ username: 1 }, { unique: true })
+UserSchema.index({ userame: 1, code: 1 }, { unique: true })
 
 exports.registerUser = (payload, callback) => {
   if (!payload.username) return callback('Error..') // TODO: Detailed error messages
