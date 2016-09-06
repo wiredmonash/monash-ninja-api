@@ -8,7 +8,7 @@ const routes = require('./app/routes')
 
 const app = new Hapi.Server()
 
-app.connection({ port: 3000 })
+app.connection({ host: '0.0.0.0', port: 3000, routes: { cors: { origin: ['*'] } } })
 
 const db = env.MONGODB_URI
 
