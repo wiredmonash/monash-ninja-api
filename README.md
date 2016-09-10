@@ -17,3 +17,6 @@ grunt spec:func
 # Run unit tests
 grunt spec:unit
 ```
+
+# License
+This project is licensed under [GNU General Public License v3.0](LICENSE.txt).
