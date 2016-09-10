@@ -7,7 +7,7 @@ grunt serve
 ```
 
 # Testing
-```
+```Bash
 # Run all tests
 grunt spec
 
