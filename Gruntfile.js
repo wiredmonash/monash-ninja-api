@@ -2,6 +2,7 @@ module.exports = (grunt) => {
   grunt.loadNpmTasks('grunt-env')
   grunt.loadNpmTasks('grunt-mocha-test')
   grunt.loadNpmTasks('grunt-nodemon')
+  grunt.loadNpmTasks('grunt-run')
 
   grunt.initConfig({
     env: {
@@ -40,12 +41,17 @@ module.exports = (grunt) => {
       local: {
         script: 'app.js'
       }
+    },
+    run: {
+      standard: {
+        exec: 'standard'
+      }
     }
   })
 
-  grunt.registerTask('spec:unit', ['env:test', 'mochaTest:unit'])
-  grunt.registerTask('spec:functional', ['env:test', 'mochaTest:functional'])
-  grunt.registerTask('spec', ['env:test', 'mochaTest:unit', 'mochaTest:functional'])
+  grunt.registerTask('spec:unit', ['env:test', 'run:standard', 'mochaTest:unit'])
+  grunt.registerTask('spec:functional', ['env:test', 'run:standard', 'mochaTest:functional'])
+  grunt.registerTask('spec', ['env:test', 'run:standard', 'mochaTest:unit', 'mochaTest:functional'])
   grunt.registerTask('docker', ['env:docker', 'mochaTest:unit', 'mochaTest:functional'])
   grunt.registerTask('serve', ['env:local', 'nodemon:local'])
 }

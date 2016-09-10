@@ -18,5 +18,9 @@ grunt spec:func
 grunt spec:unit
 ```
 
+# Contributing
+If you'd like to contribute, check out our [issues](https://github.com/wiredmonash/monash-ninja-api/issues).
+
+
 # License
-This project is licensed under [GNU General Public License v3.0](LICENSE.txt).
+This project is licensed and distributed under [GNU General Public License v3.0](LICENSE.txt).
