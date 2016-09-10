@@ -1,5 +1,5 @@
 const validate = (decoded, request, callback) => {
-  // If decoded._id not in user's database, then..
+  // TODO: Validate token
   if (false) {
     return callback(null, false)
   } else {

@@ -9,7 +9,10 @@ module.exports = (grunt) => {
         TESTING: true
       },
       local: {
-        TESTING: false
+        TESTING: false,
+        MONGODB_URI: 'mongodb://localhost:27017/monash-ninja',
+        API_URL: 'http://localhost:3000',
+        API_VERSION: '1.0.0'
       },
       docker: {
         TESTING: true
