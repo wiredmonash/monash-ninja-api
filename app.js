@@ -1,6 +1,5 @@
 const Hapi = require('hapi')
 const mongoose = require('mongoose')
-const secret = require('./config')
 const env = require('./env')
 const validate = require('./app/util/validate')
 
@@ -12,15 +11,10 @@ app.connection({ host: '0.0.0.0', port: 3000, routes: { cors: { origin: ['*'] } 
 
 const db = env.MONGODB_URI
 
-app.register(require('hapi-auth-jwt2'), (err) => {
-  if (err) console.log(err)
+app.register(require('hapi-auth-basic'), (err) => {
+  if (err) throw err
 
-  app.auth.strategy('jwt', 'jwt', {
-    key: secret,
-    validateFunc: validate,
-    verifyOptions: { algorithms: ['HS256'] }
-  })
-
+  app.auth.strategy('simple', 'basic', { validateFunc: validate })
   app.route(routes)
 })
 

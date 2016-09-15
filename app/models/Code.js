@@ -33,4 +33,8 @@ exports.useCode = (code, studentId, callback) => {
   })
 }
 
+exports.getAllCodes = (callback) => {
+  CodeModel.find({}, { code: 1, studentId: 1 }, callback)
+}
+
 exports.CodeModel = CodeModel
