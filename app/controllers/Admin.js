@@ -6,7 +6,7 @@ exports.exportAsCSV = {
   handler: (req, res) => {
     CodeModel.getAllCodes((err, codes) => {
       if (err) throw err
-      const fields = [ 'code', 'studentId' ]
+      const fields = [ 'code', 'studentId', 'email' ]
       let csv = json2csv({
         data: codes,
         fields: fields
